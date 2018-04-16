@@ -34,4 +34,8 @@ export class MisestacionesPage {
     this.navCtrl.setRoot(page);
 }
 
+openPageHija(page){
+  this.navCtrl.push(page);
+}
+
 }

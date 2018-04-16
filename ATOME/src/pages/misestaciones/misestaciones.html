@@ -1,12 +1,12 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="azulatome">
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Estaciones de Trabajo</ion-title>
     </ion-navbar>
-    <ion-navbar>
-      <ion-row>
+    <ion-navbar color="azulatome">
+      <ion-row >
         <ion-col class="groupTabs">
           <div class="centrar">
           <button class="tab tab1" (click)="openPage('MisestacionesPage')">Mis Bitácoras</button>
@@ -72,7 +72,7 @@
       </ion-list>
 
       <ion-fab right bottom>
-          <button ion-fab color="atome"><ion-icon name="add"></ion-icon></button>
+          <button ion-fab color="atome" (click)="openPageHija('CrearBitacoraPage')"><ion-icon name="add"></ion-icon></button>
          
         </ion-fab>
   </ion-content>

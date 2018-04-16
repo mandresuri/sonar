@@ -1,11 +1,11 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="azulatome">
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Estaciones de Trabajo</ion-title>
     </ion-navbar>
-    <ion-navbar>
+    <ion-navbar color="azulatome">
       <ion-row>
         <ion-col class="groupTabs">
           <div class="centrar">
@@ -43,7 +43,7 @@
         
             <ion-col>
                <div class="izq">
-              <button class="opcion puntos"><ion-icon name="checkmark"></ion-icon><br>Seleccionar</button>
+              <button class="opcion puntos"(click)="openPageHija('CrearBitacoraPage')" ><ion-icon name="checkmark"></ion-icon><br>Seleccionar</button>
             </div>
               </ion-col>      
         </ion-row>

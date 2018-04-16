@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="azulatome">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Crear Bitácora de Trabajo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Estacion de Trabajo:</ion-label>
+    <ion-select [(ngModel)]="selectedvalue">
+      <!--  carga los alamcenes del centro comercial -->
+      <ion-option *ngFor="let estacion of estaciones | async"><h2>{{ estacion.nombre }}</h2></ion-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

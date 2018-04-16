@@ -20,8 +20,10 @@ export class EstacionesPage {
 
   ionViewDidLoad() {
   }
-  openPage(page){
+  openPage(page) {
     this.navCtrl.setRoot(page);
-}
-
+  }
+  openPageHija(page) {
+    this.navCtrl.push(page);
+  }
 }

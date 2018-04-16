@@ -1,12 +1,20 @@
 page-misestaciones {
+
+    .toolbar-md-azulatome .bar-button-clear-md,
+    .toolbar-md-azulatome .bar-button-default-md,
+     .toolbar-md-azulatome .bar-button-outline-md,
+      .toolbar-md-azulatome .toolbar-title-md
+      {
+                  color : black
+        }
     .groupTabs{
-    
+        background-color: #acc5c6 ;
         border-right-color: #244c24;
         border-right-style: inset;
        }
         .tab{
             font-size: 20px;
-            background-color: #f8f8f8;
+            background-color: #acc5c6 ;
             color: black;
             margin-left: 9em;
         }
