@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Estaciones de Trabajo</ion-title>
+    </ion-navbar>
+    <ion-navbar>
+      <ion-row>
+        <ion-col class="groupTabs">
+          <div class="centrar">
+          <button class="tab tab1" (click)="openPage('MisestacionesPage')">Mis Bitácoras</button>
+        </div>
+        </ion-col>
+        <ion-col class="groupTabs">
+            <div class="centrar">
+          <button class="tab tab2"  (click)="openPage('EstacionesPage')"> Estaciones de Trabajo</button>
+        </div>
+        </ion-col>
+      
+      </ion-row>
+     </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
+    <!-- se deben listar en orden de posibilidad de canje -->
+    <ion-list class="ancho">
+    <ion-card ion-item >  
+        <!-- *ngFor="let bitacora of bitacoras let i = index" -->
+        <div class="borde">
+      <ion-item>
+        <ion-card-content>
+         
+          <ion-card-title>
+            Pendulo Simple
+            </ion-card-title>
+          <p  class="desc">
+           descripcion
+          </p>
+       
+        <ion-row class="opciones">
+        
+            <ion-col>
+               <div class="izq">
+              <button class="opcion puntos"><ion-icon name="checkmark"></ion-icon><br>Seleccionar</button>
+            </div>
+              </ion-col>      
+        </ion-row>
+     
+      </ion-card-content>
+   
+        </ion-item>
+      </div>
+      </ion-card>
+    
+    </ion-list>
+
+
+</ion-content>

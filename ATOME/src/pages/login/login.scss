@@ -1,0 +1,31 @@
+page-login {
+    .text-center{
+        text-align: center; 
+    }
+    .text-right{
+        text-align: right; 
+    }
+    
+
+    .fondo{
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/atome-77ef6.appspot.com/o/general%2Ffondo.png?alt=media&token=75f31217-d2b2-4715-9b2d-5af2326fc857");
+        background-size: 430px;
+        background-position: center;
+    }
+
+    .transp{
+        background-color: rgba(252, 253, 246, 0.29);
+    }
+    button.auth
+    {
+       color: #fff;
+        background-color: #244c24;
+
+    }
+    a{
+        font-weight: bold;
+        color: #000;
+    }
+
+    
+}

@@ -1,0 +1,69 @@
+page-estaciones {
+    .groupTabs{
+    
+        border-right-color: #244c24;
+        border-right-style: inset;
+       }
+        .tab{
+            font-size: 20px;
+            background-color: #f8f8f8;
+            color: black;
+            margin-left: 9em;
+        }
+        .tab2{
+            text-decoration: underline;
+        }
+        .tab:hover{
+            text-decoration: underline;
+        }
+        .centrar{
+            text-align: center
+        }
+        .izq{
+            text-align: right
+        }
+
+        .letra17{
+        
+            font-size: 15px;      
+        }
+    
+       .row{
+           margin-bottom: 20px;
+       }
+    
+       .opciones{
+           text-align: center;
+       }
+       .diferencia{
+        color: blue;
+       }
+       .imagenPremio{
+        max-height: 300px;
+       }
+    
+       .opcion{
+           background-color: white;
+           font-size: 18px;
+       }
+       .desc{
+        overflow: scroll;
+    }
+
+    .borde{
+        border-color: #244c24;
+        border-style: inset;
+    }
+    
+
+        @media (max-width: 500px ) and (min-width: 300px){
+            .tab{
+                margin-left: 0em;
+                font-size: 18px;
+            }
+            .adminVal{
+                display: none;
+            }
+        }
+
+}

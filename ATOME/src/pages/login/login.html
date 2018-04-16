@@ -1,0 +1,70 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+ 
+
+</ion-header>
+
+
+<ion-content padding class="fondo">
+  <ion-list>
+<div class="text-center">
+    <img  src="https://firebasestorage.googleapis.com/v0/b/atome-77ef6.appspot.com/o/general%2Flogo.png?alt=media&token=99de75d7-e1ad-4a33-b62a-dfcc089a33e7">
+  </div>
+    <!-- [(ngModel)]="user.email"           [(ngModel)]="user.password" 
+-->
+    <form>
+
+      <ion-item class="transp">
+        <ion-label class="text-center" color="dark" floating> <ion-icon name="person"></ion-icon> Correo Institucional</ion-label>
+        <ion-input 
+        [(ngModel)]="user.email"
+          name="email" 
+          type="text" 
+          autocapitalize="off" 
+          required
+
+        >
+        </ion-input>
+      </ion-item>
+     
+      <ion-item class="transp">
+        <ion-label class="text-center" color="dark" floating> <ion-icon name="unlock"></ion-icon> Contraseña</ion-label>
+        <ion-input 
+        [(ngModel)]="user.password"
+          name="password" 
+          type="password" 
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <div padding >
+        <button class="auth"
+
+            ion-button 
+            (click)="login(user)" 
+            type="submit" 
+            
+            block
+        >
+          Ingrese 
+        </button> 
+        <div class="text-right">
+        <a href="" class="button">¿Recordar Contraseña?</a>
+      </div>
+    
+      </div>
+    </form>
+  </ion-list>
+<ion-list>
+  <ion-item *ngFor="let item of usuarios ">
+<h3>{{item.tipo}}</h3>
+  </ion-item>
+</ion-list> 
+
+</ion-content>

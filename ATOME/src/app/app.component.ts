@@ -3,28 +3,33 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  uid: string;
+  nombre: String;
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'LoginPage';
 
   pages: Array<{title: string, component: any}>;
+  pagesAdmin: Array<{title: string, component: any, icono: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];
+    // { title: 'Salir', component: HomePage },
+    // { title: 'List', component: ListPage }
+    ]
 
+    this.pagesAdmin = [
+      { title: 'Crear Estación de Trabajo', component: 'MisestacionesPage', icono: 'checkbox-outline' }
+      ];
   }
 
   initializeApp() {
