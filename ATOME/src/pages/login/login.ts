@@ -4,8 +4,9 @@ import { MenuController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../app/models/user';
 //import { FirebaseObjectObservable} from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 import { Usuarios } from '../../app/models/usuario';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -27,15 +28,15 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class LoginPage {
   user= { } as User;
-  usuarios = [];
   tipo ;
+  usuarios: AngularFireList<Usuarios[]>;
  // usuarioss: AngularFireList<any>;
 //  tipo: FirebaseObjectObservable<any>;
  // usuarios$: FirebaseListObservable<Usuarios[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController,
     private afAuth: AngularFireAuth,
-    private   fdb: AngularFireDatabase,
+    private   database: AngularFireDatabase,
     public alertCtrl : AlertController
   ) {
     
@@ -70,7 +71,9 @@ export class LoginPage {
    const authObserv= this.afAuth.authState.subscribe(auth => {
     console.log('sucees');
     console.log(auth.uid);
-
+    this.usuarios = this.database.list('/usuarios/'+auth.uid);
+    console.log(this.usuarios);
+ 
     this.tipo=0;
     if (this.tipo=="0"){
          
@@ -80,15 +83,9 @@ export class LoginPage {
     }else{
       this.navCtrl.setRoot('AdministradorPage');
 
-      // this.navCtrl.setRoot('ListPage',{
-        
-      // });
+     
     }
-  // this.usuarios$ = this.fdb.list('/usuarios/'+auth.uid );
-  // this.usuarios$.subscribe(_data => {
-  //   this.usuarios  = _data;
-// })
-  // console.log(this.usuarios);
+
 
  
   

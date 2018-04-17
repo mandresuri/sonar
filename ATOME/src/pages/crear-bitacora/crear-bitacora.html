@@ -12,10 +12,19 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label>Estacion de Trabajo:</ion-label>
-    <ion-select [(ngModel)]="selectedvalue">
-      <!--  carga los alamcenes del centro comercial -->
-      <ion-option *ngFor="let estacion of estaciones | async"><h2>{{ estacion.nombre }}</h2></ion-option>
+    <ion-label>Estacion de Trabajo:<br></ion-label>
+    <ion-select [(ngModel)]="selectedvalue" (change)="onChange()" >
+      <ion-option *ngFor="let item of items | async"  >
+        <h2> {{item.nombre}}</h2>
+      </ion-option>
     </ion-select>
   </ion-item>
+  <ion-row>
+      <button ion-button><ion-icon name="bluetooth"></ion-icon></button>
+  </ion-row>
+
+  <ion-fab right bottom>
+      <button ion-fab color="atome" (click)="iniciarPractica()"><ion-icon name="play"></ion-icon></button>
+     
+    </ion-fab>
 </ion-content>

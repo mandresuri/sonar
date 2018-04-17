@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-//import {  FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import {  AngularFireObject , AngularFireList  } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the CrearBitacoraPage page.
@@ -16,13 +17,32 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'crear-bitacora.html',
 })
 export class CrearBitacoraPage {
- // almacenes: FirebaseListObservable<any>;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items: Observable<any[]>;
+  public selectedvalue;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private database: AngularFireDatabase,
+    public menu: MenuController,
+  ) {
+    console.log('carga estaciones');   
+    this.items = database.list('estacion').valueChanges();
+    console.log('selecciona');
+    console.log(this.selectedvalue);
   }
 
+  menu1Active() {
+    this.menu.enable(true, 'menu1');
+  }
+  onChange(){
+  console.log('selecciona');
+  console.log(this.selectedvalue);
+}
+
+iniciarPractica(){
+  console.log('inicia la practica');
+  
+}
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CrearBitacoraPage');
   }
 
 }
