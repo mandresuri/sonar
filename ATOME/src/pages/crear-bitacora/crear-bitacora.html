@@ -12,19 +12,52 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label>Estacion de Trabajo:<br></ion-label>
-    <ion-select [(ngModel)]="selectedvalue" (change)="onChange()" >
-      <ion-option *ngFor="let item of items | async"  >
-        <h2> {{item.nombre}}</h2>
-      </ion-option>
-    </ion-select>
+    <!-- <ion-label>Estación de Trabajo: <b>xxxxx</b><br></ion-label>  -->
+    <ion-label>Estacion de Trabajo: <b>{{device.name}}</b><br></ion-label> 
+
+ 
   </ion-item>
-  <ion-row>
-      <button ion-button><ion-icon name="bluetooth"></ion-icon></button>
+  <ion-row  >
+
+        <button *ngIf="!isenabled" ion-button icon-end (click)="conectar(device)">
+            Conectar
+            <ion-icon name="bluetooth"></ion-icon>
+          </button>
+
+          <button *ngIf="isenabled" ion-button icon-end  color="danger" (click)="desconectar()">
+              Desconectar
+              <ion-icon name="bluetooth"></ion-icon>
+            </button>
+     
+  
+    
+    </ion-row>
+      <ion-row>
+          <ion-label>Indicaciones de la Práctica:</ion-label>
+  
+        <ion-item>
+          <ion-textarea class="area">{{device.descripcion}}</ion-textarea>
+          <!-- <ion-textarea class="area">tttt</ion-textarea>  -->
+        </ion-item>
+      </ion-row>
+      <ion-row>
+      <ion-item>
+        <ion-label>Altura: {{altura}}</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tiempo: {{tiempo}}</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+      <button ion-button (click)="pedirAltura()">Obtener Altura</button>
+      </ion-item>
   </ion-row>
 
   <ion-fab right bottom>
-      <button ion-fab color="atome" (click)="iniciarPractica()"><ion-icon name="play"></ion-icon></button>
+      <button ion-fab color="atome" [disabled]="!isenabled" (click)="iniciarPractica()"><ion-icon name="play"></ion-icon></button>
      
     </ion-fab>
+
+  
 </ion-content>

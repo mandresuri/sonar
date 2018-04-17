@@ -4,7 +4,7 @@ import { MenuController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../app/models/user';
 //import { FirebaseObjectObservable} from 'angularfire2/database';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { Usuarios } from '../../app/models/usuario';
 
@@ -29,7 +29,7 @@ import { Usuarios } from '../../app/models/usuario';
 export class LoginPage {
   user= { } as User;
   tipo ;
-  usuarios: AngularFireList<Usuarios[]>;
+  usuarios$: AngularFireObject<Usuarios>;
  // usuarioss: AngularFireList<any>;
 //  tipo: FirebaseObjectObservable<any>;
  // usuarios$: FirebaseListObservable<Usuarios[]>;
@@ -71,8 +71,9 @@ export class LoginPage {
    const authObserv= this.afAuth.authState.subscribe(auth => {
     console.log('sucees');
     console.log(auth.uid);
-    this.usuarios = this.database.list('/usuarios/'+auth.uid);
-    console.log(this.usuarios);
+    this.usuarios$ = this.database.object('/usuarios/'+auth.uid);
+    
+    console.log(this.usuarios$);
  
     this.tipo=0;
     if (this.tipo=="0"){
