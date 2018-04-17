@@ -11,24 +11,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
+import { BluetoothArduinoService } from '../services/bluetoothArduino/bluetoothArduino.service';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDNRoAfBGD15BUvZyw2bIWhrD57naFCoxI",
-  authDomain: "atome-77ef6.firebaseapp.com",
-  databaseURL: "https://atome-77ef6.firebaseio.com",
-  projectId: "atome-77ef6",
-  storageBucket: "",
-  messagingSenderId: "825006961025"
+import { FIREBASE_CONFIG } from './firebase.credentials';
+import { EstacionesListService } from '../services/estaciones-list/estaciones-list.service';
 
-};
-
-export const config = {
-  apiKey: "AIzaSyDUz7IJOCgsz5Zk9HBoU0cwF9z2Q229LtI",
-  authDomain: "tiendq-3d47a.firebaseapp.com",
-  databaseURL: "https://tiendq-3d47a.firebaseio.com",
-  storageBucket: "tiendq-3d47a.appspot.com",
-  messagingSenderId: "12950516640"
-};
 
 
 @NgModule({
@@ -40,7 +28,7 @@ export const config = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
@@ -52,6 +40,9 @@ export const config = {
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothArduinoService,
+    BluetoothSerial,
+    EstacionesListService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
   ]

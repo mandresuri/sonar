@@ -12,15 +12,28 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label>Estacion de Trabajo:<br></ion-label>
-    <ion-select [(ngModel)]="selectedvalue" (change)="onChange()" >
-      <ion-option *ngFor="let item of items | async"  >
-        <h2> {{item.nombre}}</h2>
-      </ion-option>
-    </ion-select>
+    <ion-label>Estacion de Trabajo: {{device.name}}<br></ion-label>
   </ion-item>
   <ion-row>
-      <button ion-button><ion-icon name="bluetooth"></ion-icon></button>
+      <button ion-button (click)="conectar(device)"><ion-icon name="bluetooth"></ion-icon></button>
+      <button ion-button (click)="desconectar()"><ion-icon name="bluetooth"></ion-icon></button>
+      <button ion-button (click)="pedirAltura()"></button>
+      <ion-item>
+        <ion-label>{{estadoConexion}}</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{recibido}}</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{altura}}</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{tiempo}}</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
   </ion-row>
 
   <ion-fab right bottom>

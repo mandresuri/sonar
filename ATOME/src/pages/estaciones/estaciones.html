@@ -29,32 +29,30 @@
     <ion-card ion-item >  
         <!-- *ngFor="let bitacora of bitacoras let i = index" -->
         <div class="borde">
-      <ion-item>
-        <ion-card-content>
-         
-          <ion-card-title>
-            Pendulo Simple
-            </ion-card-title>
-          <p  class="desc">
-           descripcion
-          </p>
-       
-        <ion-row class="opciones">
-        
-            <ion-col>
-               <div class="izq">
-              <button class="opcion puntos"(click)="openPageHija('CrearBitacoraPage')" ><ion-icon name="checkmark"></ion-icon><br>Seleccionar</button>
-            </div>
-              </ion-col>      
-        </ion-row>
-     
-      </ion-card-content>
-   
-        </ion-item>
+          <ion-refresher *ngIf="mostrarSpiner === false" (ionRefresh)="refresh_bluetooth($event)">
+            <ion-refresher-content refreshingText="Buscando dispositivos bluetooth"></ion-refresher-content>
+          </ion-refresher>
+          <ion-segment [hidden]="mostrarSpiner === false" align="center">
+            <ion-spinner></ion-spinner>
+            Buscando dispositivos bluetooth
+          </ion-segment>
+          <ion-item-group>
+            <ion-item-sliding *ngFor="let device of devices">
+              <button (click)="openPageHija('CrearBitacoraPage',device)" ion-item>
+                <h3>Nombre: {{device.name}}</h3>
+                <p>Id: {{device.id}}</p>
+                <p>Dirección <span [hidden]="device.address == undefined">mac</span><span [hidden]="device.uuid == undefined">uuid</span>: {{device.address}}{{device.uuid}}</p>
+                <p><span [hidden]="device.class == undefined">Clase</span><span [hidden]="device.rssi == undefined">Rssi</span>: {{device.class}}{{device.rssi}}</p>
+              </button>
+            </ion-item-sliding>
+          </ion-item-group>
+
       </div>
       </ion-card>
     
     </ion-list>
-
+    <div [hidden]="li_devices.length > 0 || mostrarSpiner == true" align="center">
+      <p>No se han encontrado dispositivos desliza hacia abajo para volver a buscar</p>
+    </div>
 
 </ion-content>
