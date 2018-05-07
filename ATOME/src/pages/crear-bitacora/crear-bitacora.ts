@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Platform, AlertController } from 'ionic-angular';
-import {  AngularFireObject , AngularFireList  } from 'angularfire2/database';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { BluetoothArduinoService } from '../../services/bluetoothArduino/bluetoothArduino.service';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams, MenuController, Platform, AlertController } from "ionic-angular";
+import {  AngularFireObject , AngularFireList  } from "angularfire2/database";
+import { AngularFireDatabase } from "angularfire2/database";
+import { Observable } from "rxjs/Observable";
+import { BluetoothArduinoService } from "../../services/bluetoothArduino/bluetoothArduino.service";
 
 /**
  * Generated class for the CrearBitacoraPage page.
@@ -14,8 +14,8 @@ import { BluetoothArduinoService } from '../../services/bluetoothArduino/bluetoo
 
 @IonicPage()
 @Component({
-  selector: 'page-crear-bitacora',
-  templateUrl: 'crear-bitacora.html',
+  selector: "page-crear-bitacora",
+  templateUrl: "crear-bitacora.html",
 })
 export class CrearBitacoraPage {
   tiempo: any;
@@ -35,15 +35,15 @@ export class CrearBitacoraPage {
     private platform: Platform,
     private alertCtrl: AlertController
   ) {
-    this.device = this.navParams.get('deviceConectado');
-    console.log('carga estaciones');   
-    this.items = database.list('estacion').valueChanges();
-    console.log('selecciona');
+    this.device = this.navParams.get("deviceConectado");
+    console.log("carga estaciones");   
+    this.items = database.list("estacion").valueChanges();
+    console.log("selecciona");
     console.log(this.selectedvalue);
   }
   ionViewDidEnter() {
-    this.device = this.navParams.get('deviceConectado');
-    console.log('carga');
+    this.device = this.navParams.get("deviceConectado");
+    console.log("carga");
     console.log(this.device);
     
     
@@ -51,10 +51,10 @@ export class CrearBitacoraPage {
     this.isenabled =false;
   }
   menu1Active() {
-    this.menu.enable(true, 'menu1');
+    this.menu.enable(true, "menu1");
   }
   onChange(){
-  console.log('selecciona');
+  console.log("selecciona");
   console.log(this.selectedvalue);
 }
 
@@ -63,18 +63,18 @@ conectar(seleccion){
     this.bluetooth.bluetoothSerial.isConnected().then(
       isConnected => {
         let alert = this.alertCtrl.create({
-          title: 'Reconectar',
-          message: '¿Desea reconectar a este dispositivo?',
+          title: "Reconectar",
+          message: "¿Desea reconectar a este dispositivo?",
           buttons: [
             {
-              text: 'Cancelar',
-              role: 'cancel',
+              text: "Cancelar",
+              role: "cancel",
               handler: () => {
-                console.log('Cancel clicked');
+                console.log("Cancel clicked");
               }
             },
             {
-              text: 'Aceptar',
+              text: "Aceptar",
               handler: () => {
                 this.bluetooth.desconectar();
                 this.bluetooth.conectar(seleccion.id).then(success => {
@@ -89,18 +89,18 @@ conectar(seleccion){
         alert.present();
       }, notConnected => {
         let alert = this.alertCtrl.create({
-          title: 'Conectar',
-          message: '¿Desea conectar el dispositivo?',
+          title: "Conectar",
+          message: "¿Desea conectar el dispositivo?",
           buttons: [
             {
-              text: 'Cancelar',
-              role: 'cancel',
+              text: "Cancelar",
+              role: "cancel",
               handler: () => {
-                console.log('Cancel clicked');
+                console.log("Cancel clicked");
               }
             },
             {
-              text: 'Aceptar',
+              text: "Aceptar",
               handler: () => {
                 this.bluetooth.conectar(seleccion.id).then(success => {
                   this.bluetooth.presentToast(success);
@@ -154,7 +154,7 @@ conectar(seleccion){
   }
 
 iniciarPractica(){
-  console.log('inicia la practica');
+  console.log("inicia la practica");
   this.mensaje = "1"
   this.enviarMensajes();
 }
