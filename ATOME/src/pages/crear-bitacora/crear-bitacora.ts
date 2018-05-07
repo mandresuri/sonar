@@ -27,7 +27,7 @@ export class CrearBitacoraPage {
   estadoConexion: string;
   isenabled: boolean;
   public selectedvalue;
-  constructor( public navCtrl: NavController, 
+  constructor( public navCtrl: NavController,
     public navParams: NavParams,
     private database: AngularFireDatabase,
     public menu: MenuController,
@@ -45,20 +45,18 @@ export class CrearBitacoraPage {
     this.device = this.navParams.get("deviceConectado");
     console.log("carga");
     console.log(this.device);
-    
-    
     this.estadoConexion = "No Conectado";
     this.isenabled = false;
   }
   menu1Active() {
     this.menu.enable(true, "menu1");
   }
-  onChange( ){
+  onChange( ) {
   console.log("selecciona");
   console.log(this.selectedvalue);
 }
 
-conectar ( seleccion ){
+conectar ( seleccion ) {
   
     this.bluetooth.bluetoothSerial.isConnected().then(
       isConnected => {
@@ -148,17 +146,17 @@ conectar ( seleccion ){
     });
   }
 
-  desconectar( ){
+  desconectar( ) {
     this.bluetooth.desconectar( );
 
   }
 
-iniciarPractica( ){
+iniciarPractica( ) {
   console.log("inicia la practica");
   this.mensaje = "1";
   this.enviarMensajes();
 }
-pedirAltura( ){
+pedirAltura( ) {
   this.mensaje = "2";
   this.enviarMensajes();
 }
