@@ -36,7 +36,7 @@ export class CrearBitacoraPage {
     private alertCtrl: AlertController
   ) {
     this.device = this.navParams.get("deviceConectado");
-    console.log( "carga estaciones" );   
+    console.log( "carga estaciones" );
     this.items = database.list("estacion").valueChanges();
     console.log( "selecciona" );
     console.log(this.selectedvalue);
@@ -57,8 +57,7 @@ export class CrearBitacoraPage {
 }
 
 conectar ( seleccion ) {
-  
-    this.bluetooth.bluetoothSerial.isConnected().then(
+  this.bluetooth.bluetoothSerial.isConnected().then(
       isConnected => {
         let alert = this.alertCtrl.create({
           title: "Reconectar",
@@ -126,12 +125,12 @@ conectar ( seleccion ) {
       if (entrada !== ">") {
         if (entrada !== "") {
           this.recibido = entrada;
-          if(entrada.substr(0,2) === "a:" ){
+          if (entrada.substr(0,2) === "a:" ) {
             this.altura = entrada.substr( 2 , entrada.length - 1 );
             // this.altura = entrada.length;
-          }else if(entrada.substr(0,2) === "t:" ){
+          }else if (entrada.substr(0,2) === "t:" ) {
             this.tiempo = entrada.substr(2, entrada.length - 1);
-          }else if(entrada === "PRACTICA NO LISTA" ){
+          }else if (entrada === "PRACTICA NO LISTA" ) {
             // HAZ LO TUYO;
           }
           
