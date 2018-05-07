@@ -24,10 +24,10 @@ export class CrearBitacoraPage {
   mensaje: string = "";
   device: any;
   items: Observable<any[]>;
-  estadoConexion:string;
+  estadoConexion: string;
   isenabled: boolean;
   public selectedvalue;
-  constructor(public navCtrl: NavController, 
+  constructor( public navCtrl: NavController, 
     public navParams: NavParams,
     private database: AngularFireDatabase,
     public menu: MenuController,
@@ -36,9 +36,9 @@ export class CrearBitacoraPage {
     private alertCtrl: AlertController
   ) {
     this.device = this.navParams.get("deviceConectado");
-    console.log("carga estaciones");   
+    console.log( "carga estaciones" );   
     this.items = database.list("estacion").valueChanges();
-    console.log("selecciona");
+    console.log( "selecciona" );
     console.log(this.selectedvalue);
   }
   ionViewDidEnter() {
@@ -48,17 +48,17 @@ export class CrearBitacoraPage {
     
     
     this.estadoConexion = "No Conectado";
-    this.isenabled =false;
+    this.isenabled = false;
   }
   menu1Active() {
     this.menu.enable(true, "menu1");
   }
-  onChange(){
+  onChange( ){
   console.log("selecciona");
   console.log(this.selectedvalue);
 }
 
-conectar(seleccion){
+conectar ( seleccion ){
   
     this.bluetooth.bluetoothSerial.isConnected().then(
       isConnected => {
@@ -125,16 +125,16 @@ conectar(seleccion){
   enviarMensajes() {
     this.bluetooth.conexionMensajes = this.bluetooth.dataInOut(this.mensaje).subscribe(data => {
       let entrada = data.substr(0, data.length - 1);
-      if (entrada != ">") {
-        if (entrada != "") {
+      if (entrada !== ">") {
+        if (entrada !== "") {
           this.recibido = entrada;
-          if(entrada.substr(0,2)==="a:"){
-            this.altura = entrada.substr(2,entrada.length - 1);
-            //this.altura = entrada.length;
-          }else if(entrada.substr(0,2)==="t:"){
-            this.tiempo = entrada.substr(2,entrada.length - 1);
-          }else if(entrada==="PRACTICA NO LISTA"){
-            //HAZ LO TUYO;
+          if(entrada.substr(0,2) === "a:" ){
+            this.altura = entrada.substr( 2 , entrada.length - 1 );
+            // this.altura = entrada.length;
+          }else if(entrada.substr(0,2) === "t:" ){
+            this.tiempo = entrada.substr(2, entrada.length - 1);
+          }else if(entrada === "PRACTICA NO LISTA" ){
+            // HAZ LO TUYO;
           }
           
           console.log(`Entrada: ${entrada}`);
@@ -144,26 +144,26 @@ conectar(seleccion){
         this.bluetooth.conexionMensajes.unsubscribe();
       }
       this.mensaje = "";
-      //this.recibido = "";
+      // this.recibido = "";
     });
   }
 
-  desconectar(){
-    this.bluetooth.desconectar();
+  desconectar( ){
+    this.bluetooth.desconectar( );
 
   }
 
-iniciarPractica(){
+iniciarPractica( ){
   console.log("inicia la practica");
-  this.mensaje = "1"
+  this.mensaje = "1";
   this.enviarMensajes();
 }
-pedirAltura(){
-  this.mensaje = "2"
+pedirAltura( ){
+  this.mensaje = "2";
   this.enviarMensajes();
 }
 
-  ionViewDidLoad() {
+  ionViewDidLoad( ) {
   }
 
 }
